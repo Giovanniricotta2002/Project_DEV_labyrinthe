@@ -1,8 +1,9 @@
-.vscode/*
-*.layout
+.vscode/
+.layout
 .exe
 .o
-*.depend
+.depend
+
 project_dev_labyrinthe.layout
 project_dev_labyrinthe.depend
 obj/Debug/tile.o
