@@ -1,12 +1,8 @@
 .vscode/
-.layout
-.exe
-.o
-.depend
+*.layout
+*.exe
+*.o
+*.depend
 
-project_dev_labyrinthe.layout
-project_dev_labyrinthe.depend
-obj/Debug/tile.o
-obj/Debug/main.o
-bin/Debug/test2.exe
-bin/Debug/project_dev_labyrinthe.exe
+obj/Debug
+bin/Debug
