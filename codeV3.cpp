@@ -13,8 +13,8 @@ int main()
     // Create a window with the same pixel depth as the desktop
     sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
 
-    sf::RenderWindow window(sf::VideoMode(  240,//desktopMode.width,
-                                            240,//desktopMode.height,
+    sf::RenderWindow window(sf::VideoMode(  300,//desktopMode.width,
+                                            300,//desktopMode.height,
                                             desktopMode.bitsPerPixel),
                             "SFML part 3"/*,
                             sf::Style::Fullscreen*/);
@@ -63,63 +63,47 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            // Close the window if a key is pressed or if requested
-            if (event.type == sf::Event::Closed) window.close();
-
-            // If a key is pressed
-            if (event.type == sf::Event::KeyPressed)
-            {
-                switch (event.key.code)
-                {
-                // If escape is pressed, close the application
-                case  sf::Keyboard::Escape : window.close(); break;
-
-                // Process the up, down, left and right keys
-                case sf::Keyboard::Up :     upFlag=true; break;
-                case sf::Keyboard::Down:    downFlag=true; break;
-                case sf::Keyboard::Left:    leftFlag=true; break;
-                case sf::Keyboard::Right:   rightFlag=true; break;
-                default : break;
-                }
-            }
-
-            // If a key is released
-            if (event.type == sf::Event::KeyReleased)
-            {
-                switch (event.key.code)
-                {
-                // Process the up, down, left and right keys
-                case sf::Keyboard::Up :     upFlag=false; break;
-                case sf::Keyboard::Down:    downFlag=false; break;
-                case sf::Keyboard::Left:    leftFlag=false; break;
-                case sf::Keyboard::Right:   rightFlag=false; break;
-                default : break;
-                }
-            }
-
-            if (event.type == sf::Event::MouseMoved){
-                //std::cout << "move la position Y est "<< event.mouseMove.y << std::endl;
-                //std::cout << "move la position X est "<< event.mouseMove.x << std::endl;
+            switch(event.type){
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                case sf::Event::MouseMoved:
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                        sf::Vector2i position = sf::Mouse::getPosition(window);
+
+                        //x = event.mouseMove.x;
+                        //y = event.mouseMove.y;
+                        //std::cout << window.getSize().x << std::endl;
+                        if (position.x > window.getSize().x){
+                            x = window.getSize().x - 30;
+                            std::cout << "press la position X est "<< x << std::endl;
+                            break;
+                        }
+
+                        //std::cout << "press la position X est "<< x << std::endl;
+                        //std::cout << "press la position Y est "<< y << std::endl;
+                        //std::cout << "tetd: " << position.x << std::endl;
+                        //std::cout << "tetd: " << position.y << std::endl;
+                        x = position.x;
+                        y = position.y;
+
+
+                        break;
+                    }
+                    else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)){
 
                         x = event.mouseMove.x;
                         y = event.mouseMove.y;
-                        std::cout << "press la position Y est "<< y << std::endl;
                         std::cout << "press la position X est "<< x << std::endl;
+                        std::cout << "press la position Y est "<< y << std::endl;
+                        break;
                     }
+                    else {
+                        break;
+                    }
+                    break;
             }
-
         }
-
-        // Update coordinates
-        if (leftFlag) x-=SPRITE_SPEED;
-        if (rightFlag) x+=SPRITE_SPEED;
-        if (upFlag) y-=SPRITE_SPEED;
-        if (downFlag) y+=SPRITE_SPEED;
-        /*if (sf::Event::MouseMoved) {
-
-        }*/
-        //std::cout <<sf::Event::MouseMoved << std::endl;
 
         // Check screen boundaries
         if (x<0) x=0;
@@ -132,7 +116,7 @@ int main()
 
         // Rotate and draw the sprite
         sprite.setPosition(x,y);
-        sprite.setRotation( timer.getElapsedTime().asSeconds() / M_PI * 90.f );
+        //sprite.setRotation( timer.getElapsedTime().asSeconds() / M_PI * 90.f );
         window.draw(sprite);
 
         // Update display and wait for
