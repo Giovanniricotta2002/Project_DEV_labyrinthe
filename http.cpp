@@ -14,16 +14,8 @@ int main() {
     request.setField("Content-Type", "application/json");
     request.setBody("prenom=Sherlock");
 
-
-
-
-
-
     // Send the request
     sf::Http::Response response = http.sendRequest(request);
-
-
-
 
     // Check the status code and display the result
     sf::Http::Response::Status status = response.getStatus();
