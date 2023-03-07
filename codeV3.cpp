@@ -97,14 +97,17 @@ int main()
                 }
             }
 
-            if(event.type == sf::Event::MouseButtonPressed){
-                    std::cout << "la souris a ete deplacer" << std::endl;
-                    std::cout << "la position Y est "<< event.mouseMove.y << std::endl;
-                    std::cout << "la position X est "<< event.mouseMove.x << std::endl;
-                    x=event.mouseMove.x;
-                    y=event.mouseMove.y;
-            }
+            if (event.type == sf::Event::MouseMoved){
+                //std::cout << "move la position Y est "<< event.mouseMove.y << std::endl;
+                //std::cout << "move la position X est "<< event.mouseMove.x << std::endl;
+                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 
+                        x = event.mouseMove.x;
+                        y = event.mouseMove.y;
+                        std::cout << "press la position Y est "<< y << std::endl;
+                        std::cout << "press la position X est "<< x << std::endl;
+                    }
+            }
 
         }
 
