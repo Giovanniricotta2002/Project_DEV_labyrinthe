@@ -19,6 +19,7 @@
 					<Add library="sfml-audio-d" />
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
+					<Add library="sfml-network-d" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -35,6 +36,7 @@
 					<Add library="sfml-audio" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
+					<Add library="sfml-network" />
 				</Linker>
 			</Target>
 		</Build>

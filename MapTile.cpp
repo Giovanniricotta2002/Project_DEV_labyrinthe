@@ -1,5 +1,5 @@
 #include "MapTile.h"
-
+#include <iostream>
 
 
 
@@ -30,7 +30,7 @@ void MapTile::setUpTiles(){
         firstRow.push_back(new GTile("tiles/mur.png",j,0,false,false));
         j = j +50;
     }
-    
+
     /*firstRow.push_back(new GTile("tiles/mur.png",0,0,false,false));
     firstRow.push_back(new GTile("tiles/mur.png",50,0,false,false));
     firstRow.push_back(new GTile("tiles/mur.png",100,0,false,false));
@@ -117,4 +117,6 @@ void MapTile::setUpTiles(){
     eighthRow.push_back(new GTile("tiles/herbe.png",300,350,true,false));
     eighthRow.push_back(new GTile("tiles/joueur.png",350,350,true,false));
     tiles.push_back(eighthRow);*/
+
+
 }
