@@ -7,24 +7,36 @@ using json = nlohmann::json;
 
 int main() {
 
-    json j2 = {
-        { "name", "toto" },
-        { "dif", "easy" },
-        { "map", {
-                { 0, 1, 0 },
-                { 1, 1, 1 },
-                { 1, 0, 1 }
+    /*json j2 = {
+        "name"= "toto",
+        "dif": "easy"
+        "map": {
+                [0, 1, 0],
+                [1, 1, 1],
+                [1, 0, 1]
+            }
+    };*/
+
+
+    json j2 = json::parse(R"(
+        {
+            "name": "toto",
+            "dif": "easy",
+            "map": {
+                [0, 1, 0],
+                [1, 1, 1],
+                [1, 0, 1]
             }
         }
-    };
+    )");
 
-    
+
 
 
 
     sf::Http http;
     // We'll work on http://www.sfml-dev.org
-    http.setHost("localhost", 8080);
+    http.setHost("localhost", 3000);
     // Prepare a request to get the 'features.php' page
     sf::Http::Request request;
 

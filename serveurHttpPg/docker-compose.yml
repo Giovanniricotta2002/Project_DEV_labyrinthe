@@ -6,35 +6,47 @@ services:
     image: postgres:alpine3.17
     restart: always
     environment:
-      - POSTGRES_USER=labyrinthe
+     # - POSTGRES_USER=labyrinthe
       - POSTGRES_PASSWORD=bdd
     ports:
       - "4000:5432"
     volumes:
       - ./sql/:/docker-entrypoint-initdb.d/create_tables.sql
+      - test-volumes:/var/lib/postgresql/data
+    networks:
+      - backendnetworks
     
   
-  frontend:
+  backend:
     container_name: serveur
     build: .
+    image: serveur
     depends_on:
       - postgresql
+    command: sleep 99999
     ports:
-      - 3000:8080
+      - 3000:88
     environment:
-      - DB_HOST
-      - DB_PORT
-      - DB_USER
-      - DB_PASSWORD
-      - DB_NAME
+      DB_HOST: postgresql
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: bdd
+      DB_NAME: postgres
     links:
       - postgresql
     volumes:
-      - ./nodejs:./
+      - ./nodejs/main.js:/labyrinthe/main.js
+    networks:
+      - backendnetworks
     
 
 
+networks:
+  bdd: {}
+  backendnetworks: {}
 
+volumes:
+  test-volumes: {}
 
 
 
