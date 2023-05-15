@@ -53,7 +53,8 @@
 			<Add directory="SFML-2.5.1/lib" />
 		</Linker>
 		<Unit filename="CreateMap.cpp" />
-		<Unit filename="CreateMap.hpp" />
+		<Unit filename="HTTPlab.cpp" />
+		<Unit filename="HTTPlab.hpp" />
 		<Unit filename="menu.cpp" />
 		<Extensions />
 	</Project>

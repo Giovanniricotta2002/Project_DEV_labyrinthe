@@ -1,41 +1,54 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+#include <sstream>
 
+#include "lib/json/single_include/nlohmann/json.hpp"
+
+#include "HTTPlab.hpp"
+// #include "HTTPlab.cpp"
+using json = nlohmann::json;
 
 inline int cmap(){
+
+    HTTPlab d("localhost", 3000);
+
+
     sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML Window");
-    sf::Texture texture;
-    sf::Texture texture2;
-    sf::Texture texture4;
-    sf::Texture texture5;
-    sf::Texture texture6;
-    sf::Texture texture7;
-    sf::Texture texture8;
-    sf::Texture texture9;
+    // sf::Texture texture;
+    // sf::Texture texture2;
+    // sf::Texture texture4;
+    // sf::Texture texture5;
+    // sf::Texture texture6;
+    // sf::Texture texture7;
+    // sf::Texture texture8;
+    // sf::Texture texture9;
 
-    sf::Texture texture1;
+    // sf::Texture texture1;
 
 
-    texture.setSmooth(true);
-    texture2.setSmooth(true);
-    texture4.setSmooth(true);
-    texture5.setSmooth(true);
-    texture6.setSmooth(true);
-    texture7.setSmooth(true);
-    texture8.setSmooth(true);
-    texture9.setSmooth(true);
+    // texture.setSmooth(true);
+    // texture2.setSmooth(true);
+    // texture4.setSmooth(true);
+    // texture5.setSmooth(true);
+    // texture6.setSmooth(true);
+    // texture7.setSmooth(true);
+    // texture8.setSmooth(true);
+    // texture9.setSmooth(true);
 
-    texture1.setSmooth(true);
+    // texture1.setSmooth(true);
 
-    if (!texture.loadFromFile("tiles/mur.png")){ return -1; }
-    if (!texture1.loadFromFile("tiles/herbe.png")){ return -1; }
-    if (!texture2.loadFromFile("tiles/fin.png")){ return -1; }
-    if (!texture4.loadFromFile("tiles/piege.png")){ return -1; }
-    if (!texture5.loadFromFile("tiles/mur_cassable.png")){ return -1; }
-    if (!texture6.loadFromFile("tiles/piege_vitesse.png")){ return -1; }
-    if (!texture7.loadFromFile("tiles/interrupteur_tiles/interrupteur16.png")){ return -1; }
-    if (!texture8.loadFromFile("tiles/start.png")){ return -1; }
-    if (!texture9.loadFromFile("tiles/BORDURE.png")){ return -1; }
+    // if (!texture.loadFromFile("tiles/mur.png")){ return -1; }
+    // if (!texture1.loadFromFile("tiles/herbe.png")){ return -1; }
+    // if (!texture2.loadFromFile("tiles/fin.png")){ return -1; }
+    // if (!texture4.loadFromFile("tiles/piege.png")){ return -1; }
+    // if (!texture5.loadFromFile("tiles/mur_cassable.png")){ return -1; }
+    // if (!texture6.loadFromFile("tiles/piege_vitesse.png")){ return -1; }
+    // if (!texture7.loadFromFile("tiles/interrupteur_tiles/interrupteur16.png")){ return -1; }
+    // if (!texture8.loadFromFile("tiles/start.png")){ return -1; }
+    // if (!texture9.loadFromFile("tiles/BORDURE.png")){ return -1; }
 
 
 
@@ -48,8 +61,9 @@ inline int cmap(){
         "tiles/piege_vitesse.png",
         "tiles/interrupteur_tiles/interrupteur16.png",
         "tiles/start.png",
-        "tiles/BORDURE.png"
-    };
+        "tiles/BORDURE.png",
+        "tiles/bouton/bouton_choixDeMap.png"
+    };//bouton_save
 
     std::vector<sf::Texture> textures(imgPaths.size());
     for(int i = 0; i< imgPaths.size(); i++) {
@@ -101,7 +115,9 @@ inline int cmap(){
     sf::Sprite background24(textures[1]);
     sf::Sprite background25(textures[1]);
 
-    sf::Sprite sprite_spe(texture9);
+    sf::Sprite sprite_spe(textures[8]);
+
+    sf::Sprite btnSave(textures[9]);
 
     background1.setPosition(158, 108);
     background2.setPosition(216, 108);
@@ -139,6 +155,8 @@ inline int cmap(){
     toolbox8.setPosition(816, 116);
 
     sprite_spe.setPosition(550, 0);
+
+    btnSave.setPosition(158, 400);
 
 
 
@@ -328,58 +346,117 @@ inline int cmap(){
                 if (spriteBounds2.contains(mousePosition.x, mousePosition.y)) {
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                         texture3 = toolbox1.getTexture();
-                        std::cout << "Adresse memoire de la texture spirte2: " << texture3 << std::endl;
+                        std::cout << "Adresse memoire de la texture Mur: " << texture3 << std::endl;
                     }
                 }
                 sf::FloatRect spriteBounds3 = toolbox2.getGlobalBounds();
                 if (spriteBounds3.contains(mousePosition.x, mousePosition.y)) {
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                         texture3 = toolbox2.getTexture();
-                        std::cout << "Adresse memoire de la texture spirte2: " << texture3 << std::endl;
+                        std::cout << "Adresse memoire de la texture herbe: " << texture3 << std::endl;
                     }
                 }
                 sf::FloatRect spriteBounds4 = toolbox3.getGlobalBounds();
                 if (spriteBounds4.contains(mousePosition.x, mousePosition.y)) {
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                         texture3 = toolbox3.getTexture();
-                        std::cout << "Adresse memoire de la texture spirte2: " << texture3 << std::endl;
+                        std::cout << "Adresse memoire de la texture rouge: " << texture3 << std::endl;
                     }
                 }
                 sf::FloatRect spriteBounds5 = toolbox4.getGlobalBounds();
                 if (spriteBounds5.contains(mousePosition.x, mousePosition.y)) {
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                         texture3 = toolbox4.getTexture();
-                        std::cout << "Adresse memoire de la texture spirte2: " << texture3 << std::endl;
+                        std::cout << "Adresse memoire de la texture pique: " << texture3 << std::endl;
                     }
                 }
                 sf::FloatRect spriteBounds6 = toolbox5.getGlobalBounds();
                 if (spriteBounds6.contains(mousePosition.x, mousePosition.y)) {
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                         texture3 = toolbox5.getTexture();
-                        std::cout << "Adresse memoire de la texture spirte2: " << texture3 << std::endl;
+                        std::cout << "Adresse memoire de la texture mur cassable: " << texture3 << std::endl;
                     }
                 }
                 sf::FloatRect spriteBounds7 = toolbox6.getGlobalBounds();
                 if (spriteBounds7.contains(mousePosition.x, mousePosition.y)) {
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                         texture3 = toolbox6.getTexture();
-                        std::cout << "Adresse memoire de la texture spirte2: " << texture3 << std::endl;
+                        std::cout << "Adresse memoire de la texture ralent: " << texture3 << std::endl;
                     }
                 }
                 sf::FloatRect spriteBounds8 = toolbox7.getGlobalBounds();
                 if (spriteBounds8.contains(mousePosition.x, mousePosition.y)) {
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                         texture3 = toolbox7.getTexture();
-                        std::cout << "Adresse memoire de la texture spirte2: " << texture3 << std::endl;
+                        std::cout << "Adresse memoire de la texture btn: " << texture3 << std::endl;
                     }
                 }
                 sf::FloatRect spriteBounds9 = toolbox8.getGlobalBounds();
                 if (spriteBounds9.contains(mousePosition.x, mousePosition.y)) {
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                         texture3 = toolbox8.getTexture();
-                        std::cout << "Adresse memoire de la texture spirte2: " << texture3 << std::endl;
+                        std::cout << "Adresse memoire de la texture bleu: " << texture3 << std::endl;
                     }
                 }
+
+                sf::FloatRect boutonBound = btnSave.getGlobalBounds();
+                if (boutonBound.contains(mousePosition.x, mousePosition.y)) {
+                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                        std::cout << "labyrinth sauvegarder" << std::endl;
+
+ const sf::Texture* texturePtr = background1.getTexture();
+    std::stringstream stream;
+    stream << "0x" << std::hex << reinterpret_cast<std::uintptr_t>(texturePtr);
+std::string textureHex = stream.str();
+std::string firstTextureAddress = reinterpret_cast<std::uintptr_t>(&textures[0]);
+    std::cout << stream.str() << " " << &textures[0] << std::endl;
+
+    if (textureHex == firstTextureAddress) {
+        std::cout << "good" << std::endl;
+    }
+
+
+
+
+                        std::ofstream myjsonfile("map.json");
+
+                        if(myjsonfile.is_open()){
+                            myjsonfile << "{";
+                            myjsonfile << "\t\"case_map\": [ \n";
+                            myjsonfile << "\t\t[\"" << d.Texturees(background1) << "\"]\n";
+                        //     // myjsonfile << "\t\t[" << background1.getTexture() << ", " << background2.getTexture() << ", " << background3.getTexture() << ", " << background4.getTexture() << ", " << background5.getTexture() << "]" << " \n";
+                        //     // myjsonfile << "\t\t[" << background6.getTexture() << ", " << background7.getTexture() << ", " << background8.getTexture() << ", " << background9.getTexture() << ", " << background10.getTexture() << "]" << " \n";
+                        //     // myjsonfile << "\t\t[" << background11.getTexture() << ", " << background12.getTexture() << ", " << background13.getTexture() << ", " << background14.getTexture() << ", " << background15.getTexture() << "]" << " \n";
+                        //     // myjsonfile << "\t\t[" << background16.getTexture() << ", " << background17.getTexture() << ", " << background18.getTexture() << ", " << background19.getTexture() << ", " << background20.getTexture() << "]" << " \n";
+                        //     // myjsonfile << "\t\t[" << background21.getTexture() << ", " << background22.getTexture() << ", " << background23.getTexture() << ", " << background24.getTexture() << ", " << background25.getTexture() << "]" << " \n";
+                            myjsonfile << "\t], \n";
+                            myjsonfile << "\t\"nbr_case_total\": 27, \n";
+                            myjsonfile << "\t\"difficulty\": \"easy\", \n";
+                            myjsonfile << "\t\"creator\": \"admin\" \n";
+                            myjsonfile << "}";
+                        }
+                        std::cout << "dd" << std::endl;
+
+                        // std::ifstream f("map.json");
+                        // json map = json::parse(f);
+                        // std::cout << "dd" << std::endl;
+
+                        // std::string result = d.Post("Map", map);
+                        // std::cout << result << std::endl;
+                        // std::cout << "dd" << std::endl;
+
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
 
             }
             // Si l'�v�nement est une fermeture de fen�tre

@@ -1,3 +1,4 @@
+#include <SFML/Graphics.hpp>
 #include "HTTPlab.hpp"
 #include "lib/json/single_include/nlohmann/json.hpp"
 
@@ -118,6 +119,50 @@ std::string HTTPlab::Update(int id, json value){
 
     return "d";
 }
+
+
+
+std::string HTTPlab::Texturees(const sf::Sprite& sprite) {
+    const sf::Texture* texturePtr = sprite.getTexture();
+    std::stringstream stream;
+    stream << "0x" << std::hex << reinterpret_cast<std::uintptr_t>(texturePtr);
+        // return stream.str();
+
+
+
+
+
+
+
+
+
+    sf::Http http;
+    // We'll work on http://www.sfml-dev.org
+    http.setHost(_hostname, _port);
+    // Prepare a request to get the 'features.php' page
+    sf::Http::Request request;
+
+    request.setMethod(sf::Http::Request::Get);
+    request.setUri("/textures");
+    request.setHttpVersion(1, 1); // HTTP 1.1
+    request.setField("Content-Type", "application/json");
+
+    request.setField("textures", stream.str());
+   
+
+    // Send the request
+    sf::Http::Response response = http.sendRequest(request);
+
+    // Check the status code and display the result
+    sf::Http::Response::Status status = response.getStatus();
+    if (status == sf::Http::Response::Ok) { return response.getBody(); }
+    else { return "error"; }
+}
+
+
+
+
+
 
 /*
     case_map                | c++

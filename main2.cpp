@@ -40,46 +40,17 @@ int main()
 
     texture1.setSmooth(true);
 
-    if (!texture.loadFromFile("tiles/mur.png"))
-    {
-        return -1;
-    }
-    if (!texture1.loadFromFile("tiles/herbe.png"))
-    {
-        return -1;
-    }
-    if (!texture2.loadFromFile("tiles/fin.png"))
-    {
-        return -1;
-    }
-    if (!texture4.loadFromFile("tiles/piege.png"))
-    {
-        return -1;
-    }
-    if (!texture5.loadFromFile("tiles/mur_cassable.png"))
-    {
-        return -1;
-    }
-    if (!texture6.loadFromFile("tiles/piege_vitesse.png"))
-    {
-        return -1;
-    }
-    if (!texture7.loadFromFile("tiles/interrupteur_tiles/interrupteur16.png"))
-    {
-        return -1;
-    }
-    if (!texture8.loadFromFile("tiles/start.png"))
-    {
-        return -1;
-    }
-    if (!texture9.loadFromFile("tiles/BORDURE.png"))
-    {
-        return -1;
-    }
-    if (!texture10.loadFromFile("tiles/bouton/bouton_save.png"))
-    {
-        return -1;
-    }
+    if (!texture.loadFromFile("tiles/mur.png")) { return -1; }
+    if (!texture1.loadFromFile("tiles/herbe.png")) { return -1; }
+    if (!texture2.loadFromFile("tiles/fin.png")) { return -1; }
+    if (!texture4.loadFromFile("tiles/piege.png")) { return -1; }
+    if (!texture5.loadFromFile("tiles/mur_cassable.png")) { return -1; }
+    if (!texture6.loadFromFile("tiles/piege_vitesse.png")) { return -1; }
+    if (!texture7.loadFromFile("tiles/interrupteur_tiles/interrupteur16.png")) { return -1; }
+    if (!texture8.loadFromFile("tiles/start.png")) { return -1; }
+    if (!texture9.loadFromFile("tiles/BORDURE.png")) { return -1; }
+    if (!texture10.loadFromFile("tiles/bouton/bouton_save.png")) { return -1; }
+
     // sprite outils
     sf::Sprite toolbox1(texture);
     sf::Sprite toolbox2(texture1);
@@ -518,11 +489,20 @@ int main()
                 }
                 // special
                 sf::FloatRect boutonBound = bouton_save.getGlobalBounds();
-                if (boutonBound.contains(mousePosition.x, mousePosition.y))
-                {
-                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-                    {
+                if (boutonBound.contains(mousePosition.x, mousePosition.y)) {
+                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                         std::cout << "labyrinth sauvegarder" << std::endl;
+
+                        if (){
+                            /* code */
+                        }
+                        
+
+
+
+
+
+
 
                         /*json jsonMapPost = json::parse(R"(
                             {
@@ -539,112 +519,111 @@ int main()
                             }
                         )");*/
 
-                        json map05 = json::array();
+                        // json map05 = json::array();
 
-                        map05.push_back(background1.getTexture());
-                        map05.push_back(background2.getTexture());
-                        map05.push_back(background3.getTexture());
-                        map05.push_back(background4.getTexture());
-                        map05.push_back(background5.getTexture());
+                        // map05.push_back(background1.getTexture());
+                        // map05.push_back(background2.getTexture());
+                        // map05.push_back(background3.getTexture());
+                        // map05.push_back(background4.getTexture());
+                        // map05.push_back(background5.getTexture());
 
-                        json map15 = json::array();
+                        // json map15 = json::array();
 
-                        map15.push_back(background6.getTexture());
-                        map15.push_back(background7.getTexture());
-                        map15.push_back(background8.getTexture());
-                        map15.push_back(background9.getTexture());
-                        map15.push_back(background10.getTexture());
+                        // map15.push_back(background6.getTexture());
+                        // map15.push_back(background7.getTexture());
+                        // map15.push_back(background8.getTexture());
+                        // map15.push_back(background9.getTexture());
+                        // map15.push_back(background10.getTexture());
 
-                        json map25 = json::array();
+                        // json map25 = json::array();
 
-                        map25.push_back(background11.getTexture());
-                        map25.push_back(background12.getTexture());
-                        map25.push_back(background13.getTexture());
-                        map25.push_back(background14.getTexture());
-                        map25.push_back(background15.getTexture());
+                        // map25.push_back(background11.getTexture());
+                        // map25.push_back(background12.getTexture());
+                        // map25.push_back(background13.getTexture());
+                        // map25.push_back(background14.getTexture());
+                        // map25.push_back(background15.getTexture());
 
-                        json map35 = json::array();
+                        // json map35 = json::array();
 
-                        map35.push_back(background16.getTexture());
-                        map35.push_back(background17.getTexture());
-                        map35.push_back(background18.getTexture());
-                        map35.push_back(background19.getTexture());
-                        map35.push_back(background20.getTexture());
+                        // map35.push_back(background16.getTexture());
+                        // map35.push_back(background17.getTexture());
+                        // map35.push_back(background18.getTexture());
+                        // map35.push_back(background19.getTexture());
+                        // map35.push_back(background20.getTexture());
 
-                        json map45 = json::array();
+                        // json map45 = json::array();
 
-                        map45.push_back(background21.getTexture());
-                        map45.push_back(background22.getTexture());
-                        map45.push_back(background23.getTexture());
-                        map45.push_back(background24.getTexture());
-                        map45.push_back(background25.getTexture());
+                        // map45.push_back(background21.getTexture());
+                        // map45.push_back(background22.getTexture());
+                        // map45.push_back(background23.getTexture());
+                        // map45.push_back(background24.getTexture());
+                        // map45.push_back(background25.getTexture());
 
-                        json jsonMapPost;
-                        jsonMapPost["case_map"][0] = map05;
-                        jsonMapPost["case_map"][0] = map15;
-                        jsonMapPost["case_map"][0] = map25;
-                        jsonMapPost["case_map"][0] = map35;
-                        jsonMapPost["case_map"][0] = map45;
-                        jsonMapPost["nbr_case_total"] = 25;
-                        jsonMapPost["difficulty"] = "normal";
-                        jsonMapPost["creator"] = "exemple";
+                        // json jsonMapPost;
+                        // jsonMapPost["case_map"][0] = map05;
+                        // jsonMapPost["case_map"][0] = map15;
+                        // jsonMapPost["case_map"][0] = map25;
+                        // jsonMapPost["case_map"][0] = map35;
+                        // jsonMapPost["case_map"][0] = map45;
+                        // jsonMapPost["nbr_case_total"] = 25;
+                        // jsonMapPost["difficulty"] = "normal";
+                        // jsonMapPost["creator"] = "exemple";
 
                         // std::string result = d.Post("Map", jsonMapPost);
                         // std::cout << result << std::endl;
 
-                        std::ofstream myfile("map.txt");
-                        if (myfile.is_open())
-                        {
-                            myfile << background1.getTexture();
-                            myfile << "   ";
-                            myfile << background2.getTexture();
-                            myfile << "   ";
-                            myfile << background3.getTexture();
-                            myfile << "   ";
-                            myfile << background4.getTexture();
-                            myfile << "   ";
-                            myfile << background5.getTexture();
-                            myfile << " \n";
-                            myfile << background6.getTexture();
-                            myfile << "   ";
-                            myfile << background7.getTexture();
-                            myfile << "   ";
-                            myfile << background8.getTexture();
-                            myfile << "   ";
-                            myfile << background9.getTexture();
-                            myfile << "   ";
-                            myfile << background10.getTexture();
-                            myfile << " \n";
-                            myfile << background11.getTexture();
-                            myfile << "   ";
-                            myfile << background12.getTexture();
-                            myfile << "   ";
-                            myfile << background13.getTexture();
-                            myfile << "   ";
-                            myfile << background14.getTexture();
-                            myfile << "   ";
-                            myfile << background15.getTexture();
-                            myfile << " \n";
-                            myfile << background16.getTexture();
-                            myfile << "   ";
-                            myfile << background17.getTexture();
-                            myfile << "   ";
-                            myfile << background18.getTexture();
-                            myfile << "   ";
-                            myfile << background19.getTexture();
-                            myfile << "   ";
-                            myfile << background20.getTexture();
-                            myfile << " \n";
-                            myfile << background21.getTexture();
-                            myfile << "   ";
-                            myfile << background22.getTexture();
-                            myfile << "   ";
-                            myfile << background23.getTexture();
-                            myfile << "   ";
-                            myfile << background24.getTexture();
-                            myfile << "   ";
-                            myfile << background25.getTexture();
-                        }
+                        // std::ofstream myfile("map.txt");
+                        // if (myfile.is_open()) {
+                        //     myfile << background1.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background2.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background3.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background4.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background5.getTexture();
+                        //     myfile << " \n";
+                        //     myfile << background6.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background7.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background8.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background9.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background10.getTexture();
+                        //     myfile << " \n";
+                        //     myfile << background11.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background12.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background13.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background14.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background15.getTexture();
+                        //     myfile << " \n";
+                        //     myfile << background16.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background17.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background18.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background19.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background20.getTexture();
+                        //     myfile << " \n";
+                        //     myfile << background21.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background22.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background23.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background24.getTexture();
+                        //     myfile << "   ";
+                        //     myfile << background25.getTexture();
+                        // }
                     }
                 }
             }
