@@ -23,7 +23,7 @@ services:
     image: serveur
     depends_on:
       - postgresql
-    command: sleep 99999
+    #command: sleep 99999
     ports:
       - 3000:88
     environment:

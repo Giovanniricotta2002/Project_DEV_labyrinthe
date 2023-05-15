@@ -52,7 +52,9 @@
 			<Add option="-static-libgcc" />
 			<Add directory="SFML-2.5.1/lib" />
 		</Linker>
-		<Unit filename="main.cpp" />
+		<Unit filename="CreateMap.cpp" />
+		<Unit filename="CreateMap.hpp" />
+		<Unit filename="menu.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
