@@ -1,7 +1,17 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
 #include <iostream>
-
+#include <fstream>
+#include "lib/json/single_include/nlohmann/json.hpp"
+ 
+#include "HTTPlab.hpp"
+ 
+using json = nlohmann::json;
+ 
 int main(){
+ 
+    HTTPlab d("localhost", 3000);
+ 
     sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML Window");
     sf::Texture texture;
     sf::Texture texture2;
@@ -11,11 +21,12 @@ int main(){
     sf::Texture texture7;
     sf::Texture texture8;
     sf::Texture texture9;
-
+    sf::Texture texture10;
+ 
     sf::Texture texture1;
-
+ 
     const sf::Texture* texture3;
-
+ 
     texture.setSmooth(true);
     texture2.setSmooth(true);
     texture4.setSmooth(true);
@@ -24,9 +35,10 @@ int main(){
     texture7.setSmooth(true);
     texture8.setSmooth(true);
     texture9.setSmooth(true);
-
+    texture10.setSmooth(true);
+ 
     texture1.setSmooth(true);
-
+ 
     if (!texture.loadFromFile("tiles/mur.png")){ return -1; }
     if (!texture1.loadFromFile("tiles/herbe.png")){ return -1; }
     if (!texture2.loadFromFile("tiles/fin.png")){ return -1; }
@@ -36,7 +48,8 @@ int main(){
     if (!texture7.loadFromFile("tiles/interrupteur_tiles/interrupteur16.png")){ return -1; }
     if (!texture8.loadFromFile("tiles/start.png")){ return -1; }
     if (!texture9.loadFromFile("tiles/BORDURE.png")){ return -1; }
-
+    if (!texture10.loadFromFile("tiles/bouton/bouton_save.png")){ return -1; }
+// sprite outils
     sf::Sprite toolbox1(texture);
     sf::Sprite toolbox2(texture1);
     sf::Sprite toolbox3(texture2);
@@ -45,7 +58,7 @@ int main(){
     sf::Sprite toolbox6(texture6);
     sf::Sprite toolbox7(texture7);
     sf::Sprite toolbox8(texture8);
-
+// sprite map
     sf::Sprite background1(texture1);
     sf::Sprite background2(texture1);
     sf::Sprite background3(texture1);
@@ -71,14 +84,16 @@ int main(){
     sf::Sprite background23(texture1);
     sf::Sprite background24(texture1);
     sf::Sprite background25(texture1);
-
-    sf::Sprite sprite_spe(texture9);
-
-    background1.setPosition(158, 108);
-    background2.setPosition(216, 108);
-    background3.setPosition(274, 108);
-    background4.setPosition(332, 108);
-    background5.setPosition(390, 108);
+// sprite ligne jaune en pointillé
+    sf::Sprite yellow_line(texture9);
+// sprite bouton sauvegardé
+    sf::Sprite bouton_save(texture10);
+ 
+    background1.setPosition(158, 100);
+    background2.setPosition(216, 100);
+    background3.setPosition(274, 100);
+    background4.setPosition(332, 100);
+    background5.setPosition(390, 100);
     background6.setPosition(158, 158);
     background7.setPosition(216, 158);
     background8.setPosition(274, 158);
@@ -99,7 +114,7 @@ int main(){
     background23.setPosition(274, 332);
     background24.setPosition(332, 332);
     background25.setPosition(390, 332);
-
+ 
     toolbox1.setPosition(700, 58);
     toolbox2.setPosition(758, 58);
     toolbox3.setPosition(816, 58);
@@ -108,13 +123,14 @@ int main(){
     toolbox6.setPosition(700, 116);
     toolbox7.setPosition(758, 116);
     toolbox8.setPosition(816, 116);
-
-    sprite_spe.setPosition(550, 0);
-
-
-
+ 
+    yellow_line.setPosition(550, 0);
+ 
+    bouton_save.setPosition(158, 400);
+ 
+ 
     while (window.isOpen()){
-        // G�rez les �v�nements de la fen�tre
+        // Gérez les événements de la fenêtre
         sf::Event event;
         while (window.pollEvent(event)){
             if (event.type == sf::Event::MouseButtonPressed){
@@ -128,7 +144,7 @@ int main(){
                         background1.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds12 = background2.getGlobalBounds();
                 if (spriteBounds12.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -137,7 +153,7 @@ int main(){
                         background2.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds13 = background3.getGlobalBounds();
                 if (spriteBounds13.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -146,7 +162,7 @@ int main(){
                         background3.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds14 = background4.getGlobalBounds();
                 if (spriteBounds14.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -155,7 +171,7 @@ int main(){
                         background4.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds15 = background5.getGlobalBounds();
                 if (spriteBounds15.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -164,7 +180,7 @@ int main(){
                         background5.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds16 = background6.getGlobalBounds();
                 if (spriteBounds16.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -173,7 +189,7 @@ int main(){
                         background6.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds17 = background7.getGlobalBounds();
                 if (spriteBounds17.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -182,7 +198,7 @@ int main(){
                         background7.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds18 = background8.getGlobalBounds();
                 if (spriteBounds18.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -191,7 +207,7 @@ int main(){
                         background8.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds19 = background9.getGlobalBounds();
                 if (spriteBounds19.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -200,7 +216,7 @@ int main(){
                         background9.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds20 = background10.getGlobalBounds();
                 if (spriteBounds20.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -209,7 +225,7 @@ int main(){
                         background10.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds21 = background11.getGlobalBounds();
                 if (spriteBounds21.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -218,7 +234,7 @@ int main(){
                         background11.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds22 = background12.getGlobalBounds();
                 if (spriteBounds22.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -227,7 +243,7 @@ int main(){
                         background12.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds23 = background13.getGlobalBounds();
                 if (spriteBounds23.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -236,7 +252,7 @@ int main(){
                         background13.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds24 = background14.getGlobalBounds();
                 if (spriteBounds24.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -245,7 +261,7 @@ int main(){
                         background14.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds25 = background15.getGlobalBounds();
                 if (spriteBounds25.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -254,7 +270,7 @@ int main(){
                         background15.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds26 = background16.getGlobalBounds();
                 if (spriteBounds26.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -263,7 +279,7 @@ int main(){
                         background16.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds27 = background17.getGlobalBounds();
                 if (spriteBounds27.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -272,7 +288,7 @@ int main(){
                         background17.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds28 = background18.getGlobalBounds();
                 if (spriteBounds28.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -281,7 +297,7 @@ int main(){
                         background18.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds29 = background19.getGlobalBounds();
                 if (spriteBounds29.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -290,7 +306,7 @@ int main(){
                         background19.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds30 = background20.getGlobalBounds();
                 if (spriteBounds30.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -299,7 +315,7 @@ int main(){
                         background20.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds31 = background21.getGlobalBounds();
                 if (spriteBounds31.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -308,7 +324,7 @@ int main(){
                         background21.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds32 = background22.getGlobalBounds();
                 if (spriteBounds32.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -317,7 +333,7 @@ int main(){
                         background22.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds33 = background23.getGlobalBounds();
                 if (spriteBounds33.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -326,7 +342,7 @@ int main(){
                         background23.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds34 = background24.getGlobalBounds();
                 if (spriteBounds34.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -335,7 +351,7 @@ int main(){
                         background24.setTexture(*texture3);
                     }
                 }
-
+ 
                 sf::FloatRect spriteBounds35 = background25.getGlobalBounds();
                 if (spriteBounds35.contains(mousePosition.x, mousePosition.y)) {
                     // std::cout << "La souris est sur le sprite !" << std::endl;
@@ -401,9 +417,16 @@ int main(){
                         std::cout << "Adresse memoire de la texture spirte2: " << texture3 << std::endl;
                     }
                 }
-
+                //special
+                sf::FloatRect boutonBound = bouton_save.getGlobalBounds();
+                if (boutonBound.contains(mousePosition.x, mousePosition.y)) {
+                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                        std::cout <<"test"<<std::endl;
+                        std::cout << background1.getTexture() << " " << background2.getTexture() << " " << background3.getTexture() << " " << background4.getTexture() << " " << background5.getTexture() << std::endl;
+                    }
+                }
             }
-            // Si l'�v�nement est une fermeture de fen�tre
+            // Si l'événement est une fermeture de fenêtre
             if (event.type == sf::Event::Closed){window.close();}
         }
         window.clear();
@@ -415,7 +438,7 @@ int main(){
         window.draw(toolbox6);
         window.draw(toolbox7);
         window.draw(toolbox8);
-
+ 
         window.draw(background1);
         window.draw(background2);
         window.draw(background3);
@@ -441,10 +464,33 @@ int main(){
         window.draw(background23);
         window.draw(background24);
         window.draw(background25);
-
-        window.draw(sprite_spe);
+ 
+        window.draw(yellow_line);
+ 
+        window.draw(bouton_save);
+ 
         window.display();
     }
-
+ 
+    json jsonGetAll = json::parse(d.GetAllMap());
+    std::cout << jsonGetAll << std::endl;
+ 
+    json jsonGetId = json::parse(d.Get(1));
+    std::cout << jsonGetId << std::endl;
+ 
+    json jsonPost = json::parse(R"(
+            {
+                "case_map": [
+                    [1, 0, 0, 0, 1],
+                    [1, 1, 1, 1, 1],
+                    [1, 0, 1, 0, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 1, 0, 1]
+                ],
+                "nbr_case_total": 25,
+                "difficulty": "easy",
+                "creator": "admin"
+            }
+        )");
     return 0;
 }
