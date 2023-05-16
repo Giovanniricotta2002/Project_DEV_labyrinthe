@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "CreateMap.cpp"
+#include "pmap.cpp"
 
 
 int main(){
@@ -61,6 +62,7 @@ int main(){
                 sf::FloatRect spriteBoundsPlay = SpritePlay.getGlobalBounds();
                 if (spriteBoundsPlay.contains(mousePosition.x, mousePosition.y) && sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                     std::cout << "Play" << std::endl;
+                    pmap();
                 }
                 sf::FloatRect spriteBoundsEdit = SpriteEdit.getGlobalBounds();
                 if (spriteBoundsEdit.contains(mousePosition.x, mousePosition.y) && sf::Mouse::isButtonPressed(sf::Mouse::Left)){

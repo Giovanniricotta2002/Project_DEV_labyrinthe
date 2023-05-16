@@ -1,0 +1,42 @@
+{	"case_map": [ 
+		[
+			{"x":0, "y": 0, "obstacle": false},
+			{"x":1, "y": 0, "obstacle": false},
+			{"x":2, "y": 0, "obstacle": false},
+			{"x":3, "y": 0, "obstacle": false},
+			{"x":4, "y": 0, "obstacle": false}
+		],
+		[
+			{"x":0, "y": 1, "obstacle": false},
+			{"x":1, "y": 1, "obstacle": false},
+			{"x":2, "y": 1, "obstacle": false},
+			{"x":3, "y": 1, "obstacle": false},
+			{"x":4, "y": 1, "obstacle": false}
+		],
+		[
+			{"x":0, "y": 2, "obstacle": false},
+			{"x":1, "y": 2, "obstacle": false},
+			{"x":2, "y": 2, "obstacle": false},
+			{"x":3, "y": 2, "obstacle": false},
+			{"x":4, "y": 2, "obstacle": false}
+		],
+		[
+			{"x":0, "y": 3, "obstacle": false},
+			{"x":1, "y": 3, "obstacle": false},
+			{"x":2, "y": 3, "obstacle": false},
+			{"x":3, "y": 3, "obstacle": false},
+			{"x":4, "y": 3, "obstacle": false}
+		],
+		[
+			{"x":0, "y": 4, "obstacle": false},
+			{"x":1, "y": 4, "obstacle": false},
+			{"x":2, "y": 4, "obstacle": false},
+			{"x":3, "y": 4, "obstacle": false},
+			{"x":4, "y": 4, "obstacle": false}
+		]	], 
+	"nbr_case_total": 27, 
+	"difficulty": "easy", 
+	"creator": "admin", 
+	"start": {"x":4, "y": 4}, 
+	"end": {"x":0, "y": 0} 
+}
