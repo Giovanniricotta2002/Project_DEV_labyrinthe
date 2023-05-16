@@ -1,5 +1,42 @@
 # Project_DEV_labyrinthe
 
+## installation du projet
+Voici un guide pour installer le projet Git "Project_DEV_labyrinthe" depuis le référentiel (repository) GitHub (https://github.com/Giovanniricotta2002/Project_DEV_labyrinthe) et son sous-module "json" (https://github.com/nlohmann/json/tree/6af826d0bdb55e4b69e3ad817576745335f243ca) situé dans le dossier "lib" :
+
+1. Assurez-vous d'avoir Git installé sur votre système. Si ce n'est pas le cas, vous pouvez le télécharger à partir du site officiel de Git (https://git-scm.com/downloads) et suivez les instructions d'installation.
+
+2. Ouvrez une ligne de commande ou un terminal sur votre ordinateur.
+
+3. Naviguez jusqu'au répertoire où vous souhaitez cloner le projet "Project_DEV_labyrinthe". Vous pouvez utiliser la commande `cd` suivie du chemin du répertoire. Par exemple :
+```
+cd chemin/vers/repertoire
+```
+
+4. Maintenant, clonez le référentiel principal en utilisant la commande suivante :
+```
+git clone https://github.com/Giovanniricotta2002/Project_DEV_labyrinthe.git
+```
+Cela téléchargera les fichiers du projet dans un nouveau répertoire "Project_DEV_labyrinthe" dans votre répertoire actuel.
+
+5. Accédez au répertoire du projet en utilisant la commande `cd` :
+```
+cd Project_DEV_labyrinthe
+```
+
+6. Pour initialiser le sous-module "json", exécutez la commande suivante :
+```
+git submodule init
+```
+
+7. Mettez à jour le sous-module en exécutant la commande suivante :
+```
+git submodule update
+```
+Cela téléchargera les fichiers du sous-module "json" dans le dossier "lib" du projet.
+
+Maintenant, vous avez installé le projet Git "Project_DEV_labyrinthe" avec son sous-module "json" dans le dossier "lib". Vous pouvez utiliser le projet et les fonctionnalités fournies par le sous-module dans votre environnement de développement.
+
+## Éxecutable
 Pour lancer un programme existant dans Code::Blocks, vous pouvez suivre les étapes suivantes :
 
 1. Ouvrez Code::Blocks sur votre ordinateur.
