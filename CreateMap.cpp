@@ -147,13 +147,13 @@ inline int cmap(){
 
     background2.setPosition(216, 108);
     row1.push_back(Node(1, 0, false, false, false));
-    
+
     background3.setPosition(274, 108);
     row1.push_back(Node(2, 0, false, false, false));
-    
+
     background4.setPosition(332, 108);
     row1.push_back(Node(3, 0, false, false, false));
-    
+
     background5.setPosition(390, 108);
     row1.push_back(Node(4, 0, false, false, false));
 
@@ -232,8 +232,8 @@ inline int cmap(){
     row5.push_back(Node(4, 4, false, false, false));
 
 
-    
-    
+
+
 
 
     toolbox1.setPosition(700, 58);
@@ -248,7 +248,6 @@ inline int cmap(){
     sprite_spe.setPosition(550, 0);
 
     btnSave.setPosition(158, 400);
-
 
 
     while (window.isOpen()){
@@ -641,7 +640,7 @@ inline int cmap(){
                 if (spriteBounds6.contains(mousePosition.x, mousePosition.y)) {
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                         texture3 = toolbox5.getTexture();
-                        std::cout << "Adresse memoire de la texture mur cassable: " << texture3 << std::endl;                        
+                        std::cout << "Adresse memoire de la texture mur cassable: " << texture3 << std::endl;
                         obstacle = true;
                          end = false;
                         start = false;
@@ -698,276 +697,276 @@ inline int cmap(){
 
 
 
-                        std::ofstream myjsonfile("map.json");
+                        // std::ofstream myjsonfile("map.json");
 
-                        if(myjsonfile.is_open()){
-                            myjsonfile << "{";
-                            myjsonfile << "\t\"case_map\": [ \n";
-                            
+                        // if(myjsonfile.is_open()){
+                        //     myjsonfile << "{";
+                        //     myjsonfile << "\t\"case_map\": [ \n";
 
-                            myjsonfile << "\t\t[\n" ;
-                           for (auto nodeIt = row1.begin(); nodeIt != row1.end(); ++nodeIt) {
-                                const Node& node = *nodeIt;
-                                myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
-                                if (nodeIt + 1 != row1.end()) {
-                                    myjsonfile << ",";
+
+                        //     myjsonfile << "\t\t[\n" ;
+                        //    for (auto nodeIt = row1.begin(); nodeIt != row1.end(); ++nodeIt) {
+                        //         const Node& node = *nodeIt;
+                        //         myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
+                        //         if (nodeIt + 1 != row1.end()) {
+                        //             myjsonfile << ",";
+                        //         }
+                        //         myjsonfile << "\n";
+                        //     }
+                        //     myjsonfile << "\t\t],\n" ;
+                        //     myjsonfile << "\t\t[\n" ;
+                        //     for (auto nodeIt = row2.begin(); nodeIt != row2.end(); ++nodeIt) {
+                        //         const Node& node = *nodeIt;
+                        //         myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
+                        //         if (nodeIt + 1 != row2.end()) {
+                        //             myjsonfile << ",";
+                        //         }
+                        //         myjsonfile << "\n";
+                        //     }
+                        //     myjsonfile << "\t\t],\n" ;
+                        //     myjsonfile << "\t\t[\n" ;
+                        //     for (auto nodeIt = row3.begin(); nodeIt != row3.end(); ++nodeIt) {
+                        //         const Node& node = *nodeIt;
+                        //         myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
+                        //         if (nodeIt + 1 != row3.end()) {
+                        //             myjsonfile << ",";
+                        //         }
+                        //         myjsonfile << "\n";
+                        //     }
+                        //     myjsonfile << "\t\t],\n" ;
+                        //     myjsonfile << "\t\t[\n" ;
+                        //     for (auto nodeIt = row4.begin(); nodeIt != row4.end(); ++nodeIt) {
+                        //         const Node& node = *nodeIt;
+                        //         myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
+                        //         if (nodeIt + 1 != row4.end()) {
+                        //             myjsonfile << ",";
+                        //         }
+                        //         myjsonfile << "\n";
+                        //     }
+                        //     myjsonfile << "\t\t],\n" ;
+                        //     myjsonfile << "\t\t[\n" ;
+
+
+                        //     for (auto nodeIt = row5.begin(); nodeIt != row5.end(); ++nodeIt) {
+                        //         const Node& node = *nodeIt;
+                        //         myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
+                        //         if (nodeIt + 1 != row5.end()) {
+                        //             myjsonfile << ",";
+                        //         }
+                        //         myjsonfile << "\n";
+                        //     }
+
+
+
+                        //     myjsonfile << "\t\t]" ;
+
+                        //     myjsonfile << "\t], \n";
+                        //     myjsonfile << "\t\"nbr_case_total\": 27, \n";
+                        //     myjsonfile << "\t\"difficulty\": \"easy\", \n";
+                        //     myjsonfile << "\t\"creator\": \"admin\", \n";
+
+
+                        //     int sx = 0;
+                        //     int sy = 0;
+                        //     for (const auto& row : graph) {
+                        //         for (const auto& node : row) {
+                        //             if (node.start){
+                        //                 sx = node.x;
+                        //                 sy = node.y;
+                        //             } else {
+                        //                 // std::cout << std::endl;
+                        //             }
+                        //         }
+                        //     }
+                        //     myjsonfile << "\t\"start\": {\"x\":" << sx << ", \"y\": " << sy << "}, \n";
+
+
+                        //     int ex = 0;
+                        //     int ey = 0;
+                        //     for (const auto& row : graph) {
+                        //         for (const auto& node : row) {
+                        //             if (node.end){
+                        //                 ex = node.x;
+                        //                 ey = node.y;
+                        //             } else {
+                        //                 // std::cout << std::endl;
+                        //             }
+                        //         }
+                        //     }
+                        //     myjsonfile << "\t\"end\": {\"x\":" << ex << ", \"y\": " << ey << "} \n";
+                        //     myjsonfile << "}";
+                        //     myjsonfile.close(); // N'oubliez pas de fermer le fichier une fois que vous avez terminé de l'utiliser
+                        // }
+
+
+                        json mapJson;
+
+                        mapJson["case_map"] = {
+                            {
+                                {
+                                    {"x", row1[0].x},
+                                    {"y", row1[0].y},
+                                    {"obstacle", row1[0].obstacle},
+                                },
+                                {
+                                    {"x", row1[1].x},
+                                    {"y", row1[1].y},
+                                    {"obstacle", row1[1].obstacle},
+                                },
+                                {
+                                    {"x", row1[2].x},
+                                    {"y", row1[2].y},
+                                    {"obstacle", row1[2].obstacle},
+                                },
+                                {
+                                    {"x", row1[3].x},
+                                    {"y", row1[3].y},
+                                    {"obstacle", row1[3].obstacle},
+                                },
+                                {
+                                    {"x", row1[4].x},
+                                    {"y", row1[4].y},
+                                    {"obstacle", row1[4].obstacle},
                                 }
-                                myjsonfile << "\n";
-                            }
-                            myjsonfile << "\t\t],\n" ;
-                            myjsonfile << "\t\t[\n" ;
-                            for (auto nodeIt = row2.begin(); nodeIt != row2.end(); ++nodeIt) {
-                                const Node& node = *nodeIt;
-                                myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
-                                if (nodeIt + 1 != row2.end()) {
-                                    myjsonfile << ",";
+                            },
+                            {
+                                {
+                                    {"x", row2[0].x},
+                                    {"y", row2[0].y},
+                                    {"obstacle", row2[0].obstacle},
+                                },
+                                {
+                                    {"x", row2[1].x},
+                                    {"y", row2[1].y},
+                                    {"obstacle", row2[1].obstacle},
+                                },
+                                {
+                                    {"x", row2[2].x},
+                                    {"y", row2[2].y},
+                                    {"obstacle", row2[2].obstacle},
+                                },
+                                {
+                                    {"x", row2[3].x},
+                                    {"y", row2[3].y},
+                                    {"obstacle", row2[3].obstacle},
+                                },
+                                {
+                                    {"x", row2[4].x},
+                                    {"y", row2[4].y},
+                                    {"obstacle", row2[4].obstacle},
                                 }
-                                myjsonfile << "\n";
-                            }
-                            myjsonfile << "\t\t],\n" ;
-                            myjsonfile << "\t\t[\n" ;
-                            for (auto nodeIt = row3.begin(); nodeIt != row3.end(); ++nodeIt) {
-                                const Node& node = *nodeIt;
-                                myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
-                                if (nodeIt + 1 != row3.end()) {
-                                    myjsonfile << ",";
+                            },
+                            {
+                                {
+                                    {"x", row3[0].x},
+                                    {"y", row3[0].y},
+                                    {"obstacle", row3[0].obstacle},
+                                },
+                                {
+                                    {"x", row3[1].x},
+                                    {"y", row3[1].y},
+                                    {"obstacle", row3[1].obstacle},
+                                },
+                                {
+                                    {"x", row3[2].x},
+                                    {"y", row3[2].y},
+                                    {"obstacle", row3[2].obstacle},
+                                },
+                                {
+                                    {"x", row3[3].x},
+                                    {"y", row3[3].y},
+                                    {"obstacle", row3[3].obstacle},
+                                },
+                                {
+                                    {"x", row3[4].x},
+                                    {"y", row3[4].y},
+                                    {"obstacle", row3[4].obstacle},
                                 }
-                                myjsonfile << "\n";
-                            }
-                            myjsonfile << "\t\t],\n" ;
-                            myjsonfile << "\t\t[\n" ;
-                            for (auto nodeIt = row4.begin(); nodeIt != row4.end(); ++nodeIt) {
-                                const Node& node = *nodeIt;
-                                myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
-                                if (nodeIt + 1 != row4.end()) {
-                                    myjsonfile << ",";
+                            },
+                            {
+                                {
+                                    {"x", row4[0].x},
+                                    {"y", row4[0].y},
+                                    {"obstacle", row4[0].obstacle},
+                                },
+                                {
+                                    {"x", row4[1].x},
+                                    {"y", row4[1].y},
+                                    {"obstacle", row4[1].obstacle},
+                                },
+                                {
+                                    {"x", row4[2].x},
+                                    {"y", row4[2].y},
+                                    {"obstacle", row4[2].obstacle},
+                                },
+                                {
+                                    {"x", row4[3].x},
+                                    {"y", row4[3].y},
+                                    {"obstacle", row4[3].obstacle},
+                                },
+                                {
+                                    {"x", row4[4].x},
+                                    {"y", row4[4].y},
+                                    {"obstacle", row4[4].obstacle},
                                 }
-                                myjsonfile << "\n";
-                            }
-                            myjsonfile << "\t\t],\n" ;
-                            myjsonfile << "\t\t[\n" ;
-                         
-
-                            for (auto nodeIt = row5.begin(); nodeIt != row5.end(); ++nodeIt) {
-                                const Node& node = *nodeIt;
-                                myjsonfile << "\t\t\t{\"x\":" << node.x << ", \"y\": " << node.y << ", \"obstacle\": " << (node.obstacle ? "true" : "false") << "}";
-                                if (nodeIt + 1 != row5.end()) {
-                                    myjsonfile << ",";
-                                }
-                                myjsonfile << "\n";
-                            }
-
-
-
-                            myjsonfile << "\t\t]" ;
-
-                            myjsonfile << "\t], \n";
-                            myjsonfile << "\t\"nbr_case_total\": 27, \n";
-                            myjsonfile << "\t\"difficulty\": \"easy\", \n";
-                            myjsonfile << "\t\"creator\": \"admin\", \n";
-
-
-                            int sx = 0;
-                            int sy = 0;
-                            for (const auto& row : graph) {
-                                for (const auto& node : row) {
-                                    if (node.start){
-                                        sx = node.x;
-                                        sy = node.y;
-                                    } else {
-                                        // std::cout << std::endl;
-                                    }
-                                }
-                            }
-                            myjsonfile << "\t\"start\": {\"x\":" << sx << ", \"y\": " << sy << "}, \n";
-
-
-                            int ex = 0;
-                            int ey = 0;
-                            for (const auto& row : graph) {
-                                for (const auto& node : row) {
-                                    if (node.end){
-                                        ex = node.x;
-                                        ey = node.y;
-                                    } else {
-                                        // std::cout << std::endl;
-                                    }
+                            },
+                            {
+                                {
+                                    {"x", row5[0].x},
+                                    {"y", row5[0].y},
+                                    {"obstacle", row5[0].obstacle},
+                                },
+                                {
+                                    {"x", row5[1].x},
+                                    {"y", row5[1].y},
+                                    {"obstacle", row5[1].obstacle},
+                                },
+                                {
+                                    {"x", row5[2].x},
+                                    {"y", row5[2].y},
+                                    {"obstacle", row5[2].obstacle},
+                                },
+                                {
+                                    {"x", row5[3].x},
+                                    {"y", row5[3].y},
+                                    {"obstacle", row5[3].obstacle},
+                                },
+                                {
+                                    {"x", row5[4].x},
+                                    {"y", row5[4].y},
+                                    {"obstacle", row5[4].obstacle},
                                 }
                             }
-                            myjsonfile << "\t\"end\": {\"x\":" << ex << ", \"y\": " << ey << "} \n";
-                            myjsonfile << "}";
-                            myjsonfile.close(); // N'oubliez pas de fermer le fichier une fois que vous avez terminé de l'utiliser
+                        };
+
+                        mapJson["nbr_case_total"] = 27;
+                        mapJson["difficulty"] = "easy";
+                        mapJson["creator"] = "admin";
+
+                        int sx = 0;
+                        int sy = 0;
+                        for (const auto& row : graph) {
+                            for (const auto& node : row) {
+                                if (node.start) {
+                                    sx = node.x;
+                                    sy = node.y;
+                                }
+                            }
                         }
+                        mapJson["start"] = {{"x", sx}, {"y", sy}};
 
-
-                        // json mapJson;
-
-                        // mapJson["case_map"] = {
-                        //     {
-                        //         {
-                        //             {"x", row1[0].x},
-                        //             {"y", row1[0].y},
-                        //             {"obstacle", row1[0].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row1[1].x},
-                        //             {"y", row1[1].y},
-                        //             {"obstacle", row1[1].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row1[2].x},
-                        //             {"y", row1[2].y},
-                        //             {"obstacle", row1[2].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row1[3].x},
-                        //             {"y", row1[3].y},
-                        //             {"obstacle", row1[3].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row1[4].x},
-                        //             {"y", row1[4].y},
-                        //             {"obstacle", row1[4].obstacle},
-                        //         }
-                        //     },
-                        //     {
-                        //         {
-                        //             {"x", row2[0].x},
-                        //             {"y", row2[0].y},
-                        //             {"obstacle", row2[0].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row2[1].x},
-                        //             {"y", row2[1].y},
-                        //             {"obstacle", row2[1].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row2[2].x},
-                        //             {"y", row2[2].y},
-                        //             {"obstacle", row2[2].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row2[3].x},
-                        //             {"y", row2[3].y},
-                        //             {"obstacle", row2[3].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row2[4].x},
-                        //             {"y", row2[4].y},
-                        //             {"obstacle", row2[4].obstacle},
-                        //         }
-                        //     },
-                        //     {
-                        //         {
-                        //             {"x", row3[0].x},
-                        //             {"y", row3[0].y},
-                        //             {"obstacle", row3[0].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row3[1].x},
-                        //             {"y", row3[1].y},
-                        //             {"obstacle", row3[1].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row3[2].x},
-                        //             {"y", row3[2].y},
-                        //             {"obstacle", row3[2].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row3[3].x},
-                        //             {"y", row3[3].y},
-                        //             {"obstacle", row3[3].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row3[4].x},
-                        //             {"y", row3[4].y},
-                        //             {"obstacle", row3[4].obstacle},
-                        //         }
-                        //     },
-                        //     {
-                        //         {
-                        //             {"x", row4[0].x},
-                        //             {"y", row4[0].y},
-                        //             {"obstacle", row4[0].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row4[1].x},
-                        //             {"y", row4[1].y},
-                        //             {"obstacle", row4[1].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row4[2].x},
-                        //             {"y", row4[2].y},
-                        //             {"obstacle", row4[2].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row4[3].x},
-                        //             {"y", row4[3].y},
-                        //             {"obstacle", row4[3].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row4[4].x},
-                        //             {"y", row4[4].y},
-                        //             {"obstacle", row4[4].obstacle},
-                        //         }
-                        //     },
-                        //     {
-                        //         {
-                        //             {"x", row5[0].x},
-                        //             {"y", row5[0].y},
-                        //             {"obstacle", row5[0].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row5[1].x},
-                        //             {"y", row5[1].y},
-                        //             {"obstacle", row5[1].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row5[2].x},
-                        //             {"y", row5[2].y},
-                        //             {"obstacle", row5[2].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row5[3].x},
-                        //             {"y", row5[3].y},
-                        //             {"obstacle", row5[3].obstacle},
-                        //         },
-                        //         {
-                        //             {"x", row5[4].x},
-                        //             {"y", row5[4].y},
-                        //             {"obstacle", row5[4].obstacle},
-                        //         }
-                        //     }
-                        // };
-
-                        // mapJson["nbr_case_total"] = 27;
-                        // mapJson["difficulty"] = "easy";
-                        // mapJson["creator"] = "admin";
-
-                        // int sx = 0;
-                        // int sy = 0;
-                        // for (const auto& row : graph) {
-                        //     for (const auto& node : row) {
-                        //         if (node.start) {
-                        //             sx = node.x;
-                        //             sy = node.y;
-                        //         }
-                        //     }
-                        // }
-                        // mapJson["start"] = {{"x", sx}, {"y", sy}};
-
-                        // // Trouver les coordonnées du point d'arrivée
-                        // int ex = 0;
-                        // int ey = 0;
-                        // for (const auto& row : graph) {
-                        //     for (const auto& node : row) {
-                        //         if (node.end) {
-                        //             ex = node.x;
-                        //             ey = node.y;
-                        //         }
-                        //     }
-                        // }
-                        // mapJson["end"] = {{"x", ex}, {"y", ey}};
+                        // Trouver les coordonnées du point d'arrivée
+                        int ex = 0;
+                        int ey = 0;
+                        for (const auto& row : graph) {
+                            for (const auto& node : row) {
+                                if (node.end) {
+                                    ex = node.x;
+                                    ey = node.y;
+                                }
+                            }
+                        }
+                        mapJson["end"] = {{"x", ex}, {"y", ey}};
 
 
 
@@ -975,8 +974,8 @@ inline int cmap(){
 
 
 
-                        // std::string result = d.Post("Map", mapJson);
-                        // std::cout << result << std::endl;
+                        std::string result = d.Post("Map", mapJson);
+                        std::cout << "L'id de la map: " << result << std::endl;
                         // std::cout << "dd" << std::endl;
 
 
@@ -1001,7 +1000,7 @@ inline int cmap(){
 
                         // if (f.is_open()) {
                         //         f >> map;
-                                
+
 
                         //         f.close(); // N'oubliez pas de fermer le fichier une fois que vous avez terminé de l'utiliser
                         //     }

@@ -87,7 +87,7 @@ std::string HTTPlab::Post(std::string name, json value) {
 
     // Check the status code and display the result
     sf::Http::Response::Status status = response.getStatus();
-    if (status == sf::Http::Response::Ok) { return "ok"; }
+    if (status == sf::Http::Response::Ok) { return response.getBody(); }
     else { return "error"; }
 }
 

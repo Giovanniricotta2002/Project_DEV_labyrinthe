@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 function _pg() {
   return new Client({
-    host: '172.22.0.3',
+    host: '172.18.0.2',
     port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -65,11 +65,11 @@ app.post('/creation/:name', function (req, res) {
 
 
 
-  // let query_map = 'INSERT INTO map(case_map, nbr_de_case_total, name_difficulte, nom, creator, date_creation, start, end) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id_map'
-  // let params_map = [map, nbr_de_case_total, diff, name, creator, "NOW()", start, end]
+  let query_map = 'INSERT INTO map(case_map, nbr_de_case_total, name_difficulte, nom, creator, date_creation, estart, eend) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id_map'
+  let params_map = [map, nbr_de_case_total, diff, name, creator, "NOW()", start, end]
 
-  let query_map = 'INSERT INTO map(case_map) VALUES($1) RETURNING id_map'
-  let params_map = [map]
+  // let query_map = 'INSERT INTO map(case_map) VALUES($1) RETURNING id_map'
+  // let params_map = [map]
 // console.log(query_map, params_map);
   query(query_map, params_map, res)
 

@@ -5,6 +5,8 @@
 #include <queue>
 #include <cmath>
 #include "lib/json/single_include/nlohmann/json.hpp"
+#include "HTTPlab.hpp"
+
 
 using json = nlohmann::json;
 
@@ -65,20 +67,37 @@ inline std::vector<sNode *> aStar(sNode *start, sNode *goal, std::vector<std::ve
 }
 
 inline int pmap() {
-    std::ifstream file("map.json");
+    // std::ifstream file("map.json");
     json data;
-    file >> data;
+    // file >> data;
+
+    int idmap = 0;
+
+
+    std::cout << "Donnée l'id de la map que vous voulez jouer: " << std::endl;
+    std::cin >> idmap;
+
+
+
+    HTTPlab lab("localhost", 3000);
+    json d = json::parse(lab.Get(idmap));
+    data = json::parse(d.dump());
+
+
+
+
+
 
     std::vector<std::vector<sNode>> graph;
-    graph.resize(data["case_map"].size());
+    graph.resize(data[0]["case_map"].size());
 
     for (size_t i = 0; i < graph.size(); ++i) {
-        graph[i].resize(data["case_map"][i].size());
+        graph[i].resize(data[0]["case_map"][i].size());
 
         for (size_t j = 0; j < graph[i].size(); ++j) {
-            int x = data["case_map"][j][i]["x"];
-            int y = data["case_map"][j][i]["y"];
-            bool obstacle = data["case_map"][j][i]["obstacle"];
+            int x = data[0]["case_map"][j][i]["x"];
+            int y = data[0]["case_map"][j][i]["y"];
+            bool obstacle = data[0]["case_map"][j][i]["obstacle"];
 
 
             sNode node(x, y);
@@ -90,8 +109,8 @@ inline int pmap() {
     int numRows = graph.size();
     int numCols = graph[0].size();
     
-    sNode *start = &graph[data["start"]["x"]][data["start"]["y"]];
-    sNode *goal = &graph[data["end"]["x"]][data["end"]["y"]];
+    sNode *start = &graph[data[0]["estart"]["x"]][data[0]["estart"]["y"]];
+    sNode *goal = &graph[data[0]["eend"]["x"]][data[0]["eend"]["y"]];
     std::vector<sNode *> path = aStar(start, goal, graph);
 
     if (!path.empty()) {
