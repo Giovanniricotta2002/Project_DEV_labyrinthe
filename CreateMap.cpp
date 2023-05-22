@@ -140,7 +140,7 @@ inline int cmap(){
 
     sf::Sprite sprite_spe(textures[8]);
 
-    sf::Sprite btnSave(textures[9]);
+    sf::Sprite btnSave(textures[10]);
 
     background1.setPosition(158, 108);
     row1.push_back(Node(0, 0, false, false, false));
@@ -969,56 +969,11 @@ inline int cmap(){
                         mapJson["end"] = {{"x", ex}, {"y", ey}};
 
 
-
-                        // std::cout << mapJson << std::endl;
-
-
-
                         std::string result = d.Post("Map", mapJson);
                         std::cout << "L'id de la map: " << result << std::endl;
-                        // std::cout << "dd" << std::endl;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        // std::ifstream f("map.json");
-                        // json map;
-
-                        // if (f.is_open()) {
-                        //         f >> map;
-
-
-                        //         f.close(); // N'oubliez pas de fermer le fichier une fois que vous avez terminé de l'utiliser
-                        //     }
-
-                        // // std::cout << map.dump() << std::endl;
-
 
                     }
                 }
-
-
-
-
-
-
-
-
-
 
 
             }
@@ -1027,7 +982,7 @@ inline int cmap(){
         }
         window.clear();
 
-        std::array<sf::Sprite*, 34> DrawSprite = {
+        std::array<sf::Sprite*, 35> DrawSprite = {
             &toolbox1,
             &toolbox2,
             &toolbox3,
@@ -1062,7 +1017,9 @@ inline int cmap(){
             &background24,
             &background25,
 
-            &sprite_spe
+            &sprite_spe,
+
+            &btnSave
         };
 
         for (int i = 0; i < DrawSprite.size(); i++) {

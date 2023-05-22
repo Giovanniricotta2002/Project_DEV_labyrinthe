@@ -48,8 +48,6 @@ function query(query, params, res) {
 
 
 app.post('/creation/:name', function (req, res) {
-  //console.log("headers => ", req.headers);
-  //console.log("headers.map => ", map);
 
 
   let mapLab = JSON.parse(req.headers.map)
@@ -68,9 +66,7 @@ app.post('/creation/:name', function (req, res) {
   let query_map = 'INSERT INTO map(case_map, nbr_de_case_total, name_difficulte, nom, creator, date_creation, estart, eend) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id_map'
   let params_map = [map, nbr_de_case_total, diff, name, creator, "NOW()", start, end]
 
-  // let query_map = 'INSERT INTO map(case_map) VALUES($1) RETURNING id_map'
-  // let params_map = [map]
-// console.log(query_map, params_map);
+
   query(query_map, params_map, res)
 
 
